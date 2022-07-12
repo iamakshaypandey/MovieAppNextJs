@@ -1,3 +1,4 @@
+
 .container {
   padding: 0 2rem;
 }
@@ -12,6 +13,10 @@
   align-items: center;
 }
 
+.bgNav{
+  background-color:#41464bd1;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -19,6 +24,7 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .footer a {
@@ -26,6 +32,12 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.Footertext{
+  height: 5rem;
+  background-color:#41464bd1;
+
 }
 
 .title a {
