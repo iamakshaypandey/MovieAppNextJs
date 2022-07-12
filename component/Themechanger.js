@@ -1,7 +1,7 @@
 // import { useTheme } from 'next-themes'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { darkMode } from '../tailwind.config'
+// import { darkMode } from '../tailwind.config'
 
 const ThemeChanger = () => {
     //   const { theme, setTheme } = useTheme()
@@ -13,7 +13,7 @@ const ThemeChanger = () => {
         }else{
             setTheme(false)
         }
-        const b =document.body.style.backgroundColor='red'
+        const b =document.body.style.backgroundColor='white'
         console.log('lightmod',b);
     }
     function DarkModeFun(){  
@@ -24,7 +24,7 @@ const ThemeChanger = () => {
             setTheme(false)
         }
         console.log('dark mod');
-        const b = document.body.style.backgroundColor='white'
+        const b = document.body.style.backgroundColor='gray'
 
         const ChangBackground = styled.body`background-color:green`
     }

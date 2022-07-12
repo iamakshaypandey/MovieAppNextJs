@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 function Details({ movieData }) {
     console.log(movieData);
     return (
@@ -11,7 +11,7 @@ function Details({ movieData }) {
                      }}>
                     <div className='d-flex justify-content-center align-item-center flex-wrap'>
                         <div className='p-4'>
-                            <img className="card-img-top movie-img-wh  " src={`https://image.tmdb.org/t/p/w220_and_h330_face${movieData?.poster_path}`} alt="DATAIMAGE NOT FOUND" />
+                            <Image width={200} height={300} className="card-img-top movie-img-wh  " src={`https://image.tmdb.org/t/p/w220_and_h330_face${movieData?.poster_path}`} alt="DATAIMAGE NOT FOUND" />
                         </div>
                         <div className=' m-4 shadow details-background rounded  w-75'>
                             <div className='text-left'>
