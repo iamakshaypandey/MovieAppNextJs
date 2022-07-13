@@ -1,52 +1,35 @@
 import Link from 'next/link'
 import brand from '../public/barnd.svg'
+import dark from '../public/dark.svg'
+import light from '../public/light.svg'
 import Image  from 'next/image'
 import styles from '../styles/Home.module.css'
-import ThemeChanger from './Themechanger'
-import { useTheme } from 'next-themes'
-import {MoonIcon,SunIcon} from '@heroicons/react/solid'
-import {useState,useEffect} from 'react'
+import useDarkMode from './useDarkMode'
+
+
+
 
 function Navbar() {
-
-    // const [mounted,setMounted] = useState(false)
-
-    // useEffect(()=>{
-    //     setMounted(true)
-    // },[])
-
-    // const {systemTheme,theme,setTheme } = useTheme()
-
-    // const renderThemeChanger = () =>{
-    //     const currentTheme = theme ==='system' ? systemTheme : theme;
-    //     if(currentTheme==='dark'){
-    //         console.log('click1');
-    //         return(
-    //             <SunIcon className='w-25 h-25' role='button' onClick={()=>setTheme('light')}/>
-    //         )      
-    //     }else{
-    //         console.log('click2');
-    //         return(
-    //             <MoonIcon className='w-25 h-25' role='button' onClick={()=>setTheme('dark')}/>
-    //         )
-    //     }
-    // }
+    const [colorTheme, setTheme] = useDarkMode();
 
   return (
    <>
-   {/* <ChangBackground> */}
-    <nav className={`navbar navbar-expand-lg ${styles.bgNav}  navbar-light`} >
+    <nav className={`navbar ${styles.bgNav} position-sticky top-0`} >
         <Link className="navbar-brand h1" href="/">
             <a>
                 <Image src={brand} alt="brand" className='w-50 h-50' />
             </a>
         </Link>
-        <div>
-        <ThemeChanger/>
-        {/* {renderThemeChanger()} */}
+        <div className=''>
+            {colorTheme === "light" ? (
+                <Image  src={light} width={50} height={50} onClick={() => setTheme("light")}>
+                </Image>
+            ) : (
+                <Image  src={dark} width={50} height={50} onClick={() => setTheme("dark")}>  
+                </Image>
+            )}     
         </div>
     </nav>
-   {/* </ChangBackground> */}
    </>
   )
 }
