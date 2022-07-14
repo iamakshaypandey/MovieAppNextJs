@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import styled from "styled-components";
+
 
 function useDarkMode() {
   const [theme, setTheme] = useState(
@@ -12,7 +12,7 @@ function useDarkMode() {
 
   useEffect(() => {
     const root = document.body;
-    console.log(root,'root data');
+    // console.log(root,'root data');
     root.classList.remove(colorTheme);
     root.classList.add(theme);
 
