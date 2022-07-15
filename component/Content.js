@@ -6,11 +6,11 @@ import Link from 'next/link';
 
 
 
+let page = 2;
 
 function Content(props) {
 
     const [posts, setPosts] = useState(props.data.data1)
-    let page = 2;
 
     const getMorePost = async () => {
         const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=5d98a7a1405b8032e28c31e19e4d10a9&language=en-US&query=a&page=${page}&include_adult=false`);
