@@ -7,7 +7,6 @@ function Details({ movieData }) {
                 <div className='img-back m-auto' style={{
                     backgroundRepeat: 'no-repeat',
                     height: '100%',
-                    // backgroundImage: `linear-gradient(rgb(57 107 131 / 98%), rgba(0, 0, 0, 0.5))`,
                 }}>
                     <div className='d-flex justify-content-center align-item-center flex-wrap'>
                         <div className='p-4'>
@@ -43,24 +42,6 @@ function Details({ movieData }) {
 export default Details
 
 
-
-
-// export async function getStaticPaths(){
-//     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=5d98a7a1405b8032e28c31e19e4d10a9&language=en-US&query=a&page=1&include_adult=false`)
-//     const data = await response.json()
-//     // console.log(data,'data');
-//     const paths = data.results.map(Details=>{
-//         return {
-//             params:{
-//                 Detailsid:`${Details.id}`
-//             }
-//         }
-//     })
-//     return {
-//         paths,
-//         fallback:false
-//     }
-// }
 
 
 export async function getServerSideProps(context) {

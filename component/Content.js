@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
-// import InfiniteScroll from 'react-infinite-scroll-component'
 
 
 
@@ -11,44 +10,31 @@ import Link from 'next/link';
 function Content(props) {
 
     const [posts, setPosts] = useState(props.data.data1)
-    const [hasMore, setHasmore] = useState(true)
-    const [page, setPage] = useState(props.data.currentPage)
-
-
-
-
+    let page = 2;
 
     const getMorePost = async () => {
         const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=5d98a7a1405b8032e28c31e19e4d10a9&language=en-US&query=a&page=${page}&include_adult=false`);
         const newPosts = await res.json();
         const newPosts1 = newPosts.results
         setPosts((post) => [...post, ...newPosts1]);
-        setPage(page + 1)
+        page += 1;
     };
+
+    const handleScroll = (e) => {
+        const TotleHight = e.target.scrollTop + e.target.clientHeight + 10
+        if (TotleHight >= e.target.scrollHeight) {
+            getMorePost();
+        }
+    }
 
 
     useEffect(() => {
         const elm = document.querySelector('#scrolling')
-        elm.addEventListener('scroll', () => {
-            const {scrollHeight,scrollTop,clientHeight} = document.documentElement
-            const TotleHight = scrollTop+clientHeight+5
-            if (TotleHight >=scrollHeight) {
-                getMorePost()
-            }   
-        })
-    })
+        elm.addEventListener('scroll', handleScroll)
+    }, [])
 
     return (
         <>
-            {/* <InfiniteScroll
-                dataLength={page}
-                next={getMorePost}
-                hasMore={hasMore}
-                loader={<h3> Loading...</h3>}
-                endMessage={<h4>Nothing more to show</h4>}
-            >
-                
-            </InfiniteScroll> */}
             <div className='container' id='scrolling' style={{ height: '100vh', overflowY: 'scroll' }}>
                 <div className="row pt-2  justify-content-center ">
                     {posts.map((defaultMovie, index) => {
